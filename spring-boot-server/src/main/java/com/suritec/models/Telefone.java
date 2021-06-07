@@ -16,6 +16,10 @@ public class Telefone {
 	@Column(name = "numero")
 	private Integer numero;
 
+	@ManyToOne
+	@JoinColumn(name="id")
+	private Cliente cliente;
+
 	public Telefone() {
 
 	}

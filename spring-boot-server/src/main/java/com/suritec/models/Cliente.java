@@ -3,6 +3,7 @@ package com.suritec.models;
 import com.sun.tools.javac.jvm.Items;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,8 +24,8 @@ public class Cliente {
 	@JoinColumn(name = "id", referencedColumnName = "id")
 	private Endereco endereco;
 
-	@OneToMany(mappedBy="cliente")
-	private Set<Telefone> telefones ;
+	@OneToMany(mappedBy = "cliente")
+	private List<Telefone> telefones;
 
 	public Cliente() {
 
