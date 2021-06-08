@@ -9,9 +9,9 @@ import { ClienteService } from 'src/app/_services/cliente.service';
 })
 export class ClienteAddComponent implements OnInit {
   cliente: Cliente = {
-    title: '',
-    description: '',
-    published: false
+    nome: '',
+    cpf: '',
+    // published: false
   };
   submitted = false;
 
@@ -22,8 +22,8 @@ export class ClienteAddComponent implements OnInit {
 
   saveCliente(): void {
     const data = {
-      title: this.cliente.title,
-      description: this.cliente.description
+      nome: this.cliente.nome,
+      cpf: this.cliente.cpf
     };
 
     this.clienteService.create(data)
@@ -40,9 +40,9 @@ export class ClienteAddComponent implements OnInit {
   newCliente(): void {
     this.submitted = false;
     this.cliente = {
-      title: '',
-      description: '',
-      published: false
+      nome: '',
+      cpf: '',
+      //published: false
     };
   }
 
