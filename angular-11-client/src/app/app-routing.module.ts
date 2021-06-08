@@ -9,6 +9,8 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import {ClienteAddComponent} from "./components/cliente-add/cliente-add.component";
+import {ClienteListComponent} from "./components/cliente-list/cliente-list.component";
+import {ClienteDetailsComponent} from "./components/cliente-details/cliente-details.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
-  { path: 'cliente', component: ClienteAddComponent },
+  { path: 'clientes', component: ClienteListComponent },
+  { path: 'clientes/:id', component: ClienteDetailsComponent },
+  { path: 'add', component: ClienteAddComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

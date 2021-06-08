@@ -10,9 +10,9 @@ import { Cliente } from 'src/app/models/cliente.model';
 })
 export class ClienteDetailsComponent implements OnInit {
   currentCliente: Cliente = {
-    title: '',
-    description: '',
-    published: false
+    nome: '',
+    cpf: '',
+    // published: false
   };
   message = '';
 
@@ -40,8 +40,8 @@ export class ClienteDetailsComponent implements OnInit {
 
   updatePublished(status: boolean): void {
     const data = {
-      title: this.currentCliente.title,
-      description: this.currentCliente.description,
+      nome: this.currentCliente.nome,
+      description: this.currentCliente.cpf,
       published: status
     };
 
@@ -50,7 +50,7 @@ export class ClienteDetailsComponent implements OnInit {
     this.clienteService.update(this.currentCliente.id, data)
       .subscribe(
         response => {
-          this.currentCliente.published = status;
+         // this.currentCliente.published = status;
           console.log(response);
           this.message = response.message ? response.message : 'O cliente foi atualizado com sucesso!';
         },

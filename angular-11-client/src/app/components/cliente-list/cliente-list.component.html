@@ -27,7 +27,7 @@
         [class.active]="i == currentIndex"
         (click)="setActiveCliente(cliente, i)"
       >
-        {{ cliente.title }}
+        {{ cliente.nome }}
       </li>
     </ul>
 
@@ -39,16 +39,16 @@
     <div *ngIf="currentCliente">
       <h4>Cliente</h4>
       <div>
-        <label><strong>Title:</strong></label> {{ currentCliente.title }}
+        <label><strong>Nome:</strong></label> {{ currentCliente.nome }}
       </div>
       <div>
-        <label><strong>Description:</strong></label>
-        {{ currentCliente.description }}
+        <label><strong>CPF:</strong></label>
+        {{ currentCliente.cpf }}
       </div>
-      <div>
-        <label><strong>Status:</strong></label>
-        {{ currentCliente.published ? "Published" : "Pending" }}
-      </div>
+<!--      <div>-->
+<!--        <label><strong>Status:</strong></label>-->
+<!--        {{ currentCliente.published ? "Published" : "Pending" }}-->
+<!--      </div>-->
 
       <a class="badge badge-warning" routerLink="/clientes/{{ currentCliente.id }}">
         Edit
