@@ -1,14 +1,21 @@
 package com.suritec.models;
 
-import com.sun.tools.javac.jvm.Items;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
+
+@Getter
+@Setter
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+
+public class Cliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,10 +34,8 @@ public class Cliente {
 	@OneToMany(mappedBy = "cliente")
 	private List<Telefone> telefones;
 
-	public Cliente() {
-
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nome=" + nome + ", tipo=" + cpf + "]";
 	}
-
-
-
 }

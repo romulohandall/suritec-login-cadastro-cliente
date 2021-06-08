@@ -11,7 +11,7 @@ export class ClienteListComponent implements OnInit {
   clientes?: Cliente[];
   currentCliente?: Cliente;
   currentIndex = -1;
-  title = '';
+  nome = '';
 
   constructor(private clienteService: ClienteService) { }
 
@@ -54,11 +54,11 @@ export class ClienteListComponent implements OnInit {
         });
   }
 
-  searchTitle(): void {
+  searchNome(): void {
     this.currentCliente = undefined;
     this.currentIndex = -1;
 
-    this.clienteService.findByTitle(this.title)
+    this.clienteService.findByNome(this.nome)
       .subscribe(
         data => {
           this.clientes = data;

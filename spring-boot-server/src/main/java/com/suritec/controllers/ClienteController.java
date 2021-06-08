@@ -31,14 +31,14 @@ public class ClienteController {
 	ClienteRepository clienteRepository;
 
 	@GetMapping("/clientes")
-	public ResponseEntity<List<Cliente>> getAllTutorials(@RequestParam(required = false) String title) {
+	public ResponseEntity<List<Cliente>> getAllClientes(@RequestParam(required = false) String nome) {
 		try {
 			List<Cliente> clientes = new ArrayList<Cliente>();
 
-			if (title == null)
+			if (nome == null)
 				clienteRepository.findAll().forEach(clientes::add);
 			else
-				clienteRepository.findByTitleContaining(title).forEach(clientes::add);
+				clienteRepository.findByTitleContaining(nome).forEach(clientes::add);
 
 			if (clientes.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -51,7 +51,7 @@ public class ClienteController {
 	}
 
 	@GetMapping("/clientes/{id}")
-	public ResponseEntity<Cliente> getTutorialById(@PathVariable("id") long id) {
+	public ResponseEntity<Cliente> getClienteById(@PathVariable("id") long id) {
 		Optional<Cliente> clienteData = clienteRepository.findById(id);
 
 		if (clienteData.isPresent()) {
@@ -62,33 +62,29 @@ public class ClienteController {
 	}
 
 	@PostMapping("/clientes")
-	public ResponseEntity<Cliente> createTutorial(@RequestBody Cliente Cliente) {
+	public ResponseEntity<Cliente> createCliente(@RequestBody Cliente Cliente) {
 		try {
-			Cliente _tutorial = clienteRepository
-					.save(new Cliente(cliente.getTitle(), cliente.getDescription(), false));
-			return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
+			Cliente _cliente = clienteRepository
+					.save(Cliente);
+			return new ResponseEntity<>(_cliente, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
 	@PutMapping("/clientes/{id}")
-	public ResponseEntity<Cliente> updateTutorial(@PathVariable("id") long id, @RequestBody Cliente cliente) {
+	public ResponseEntity<Cliente> updateCliente(@PathVariable("id") long id, @RequestBody Cliente cliente) {
 		Optional<Cliente> clienteData = clienteRepository.findById(id);
 
 		if (clienteData.isPresent()) {
-			Cliente _cliente = clienteData.get();
-			_cliente.setTitle(cliente.getTitle());
-			_cliente.setDescription(cliente.getDescription());
-			_cliente.setPublished(cliente.isPublished());
-			return new ResponseEntity<>(clienteRepository.save(_cliente), HttpStatus.OK);
+			return new ResponseEntity<>(clienteRepository.save(cliente), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
 	@DeleteMapping("/clientes/{id}")
-	public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
+	public ResponseEntity<HttpStatus> deleteCliente(@PathVariable("id") long id) {
 		try {
 			clienteRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -98,7 +94,7 @@ public class ClienteController {
 	}
 
 	@DeleteMapping("/clientes")
-	public ResponseEntity<HttpStatus> deleteAllTutorials() {
+	public ResponseEntity<HttpStatus> deleteAllClientes() {
 		try {
 			clienteRepository.deleteAll();
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -36,7 +36,7 @@ export class ClienteService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title: any): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(`${baseUrl}?title=${title}`);
+  findByNome(nome: any): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(`${baseUrl}?nome=${nome}`);
   }
 }
