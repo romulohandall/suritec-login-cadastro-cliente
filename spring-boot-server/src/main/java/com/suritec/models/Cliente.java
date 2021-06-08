@@ -18,6 +18,7 @@ import java.util.List;
 public class Cliente implements Serializable {
 
 	@Id
+	@Column(name = "idCliente")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
@@ -31,7 +32,7 @@ public class Cliente implements Serializable {
 	@JoinColumn(name = "id", referencedColumnName = "id")
 	private Endereco endereco;
 
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy = "cliente", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	private List<Telefone> telefones;
 
 	@Override

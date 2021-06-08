@@ -1,12 +1,20 @@
 package com.suritec.models;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "endereco")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Endereco {
 
 	@Id
+	@Column(name = "idEndereco")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
@@ -27,14 +35,6 @@ public class Endereco {
 
 	@OneToOne(mappedBy = "endereco")
 	private Cliente cliente;
-
-
-
-	public Endereco() {
-
-	}
-
-
 
 
 

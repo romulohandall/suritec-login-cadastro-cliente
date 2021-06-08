@@ -1,12 +1,20 @@
 package com.suritec.models;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "telefone")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Telefone {
 
 	@Id
+	@Column(name = "idTelefone")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
@@ -17,13 +25,8 @@ public class Telefone {
 	private Integer numero;
 
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="idCliente", nullable=false)
 	private Cliente cliente;
-
-	public Telefone() {
-
-	}
-
 
 
 }
