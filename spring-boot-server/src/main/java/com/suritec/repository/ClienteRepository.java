@@ -1,6 +1,6 @@
 package com.suritec.repository;
 
-import com.bezkoder.spring.datajpa.model.Tutorial;
+import com.suritec.models.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
