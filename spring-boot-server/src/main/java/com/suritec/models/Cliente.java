@@ -18,9 +18,8 @@ import java.util.List;
 public class Cliente implements Serializable {
 
 	@Id
-	@Column(name = "idCliente")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long idCliente;
 
 	@Column(name = "nome")
 	private String nome;
@@ -29,14 +28,10 @@ public class Cliente implements Serializable {
 	private String cpf;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", referencedColumnName = "id")
 	private Endereco endereco;
 
-	@OneToMany(mappedBy = "cliente", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "cliente")
 	private List<Telefone> telefones;
 
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + nome + ", tipo=" + cpf + "]";
-	}
+
 }

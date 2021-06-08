@@ -14,9 +14,8 @@ import javax.persistence.*;
 public class Endereco {
 
 	@Id
-	@Column(name = "idEndereco")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long idEndereco;
 
 	@Column(name = "cep")
 	private Integer cep;

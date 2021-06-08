@@ -14,9 +14,8 @@ import javax.persistence.*;
 public class Telefone {
 
 	@Id
-	@Column(name = "idTelefone")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long idTelefone;
 
 	@Column(name = "tipo")
 	private String tipo;
@@ -25,7 +24,7 @@ public class Telefone {
 	private Integer numero;
 
 	@ManyToOne
-	@JoinColumn(name="idCliente", nullable=false)
+	@JoinColumn(name="idCliente" , nullable=false)
 	private Cliente cliente;
 
 

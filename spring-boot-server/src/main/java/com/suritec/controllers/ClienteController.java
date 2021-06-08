@@ -38,7 +38,7 @@ public class ClienteController {
 			if (nome == null)
 				clienteRepository.findAll().forEach(clientes::add);
 			else
-				clienteRepository.findByTitleContaining(nome).forEach(clientes::add);
+				clienteRepository.findByNomeContaining(nome).forEach(clientes::add);
 
 			if (clientes.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -104,18 +104,18 @@ public class ClienteController {
 
 	}
 
-	@GetMapping("/clientes/published")
-	public ResponseEntity<List<Cliente>> findByPublished() {
-		try {
-			List<Cliente> clientes = clienteRepository.findByPublished(true);
-
-			if (clientes.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-			return new ResponseEntity<>(clientes, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
+//	@GetMapping("/clientes/published")
+//	public ResponseEntity<List<Cliente>> findByPublished() {
+//		try {
+//			List<Cliente> clientes = clienteRepository.findByPublished(true);
+//
+//			if (clientes.isEmpty()) {
+//				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//			}
+//			return new ResponseEntity<>(clientes, HttpStatus.OK);
+//		} catch (Exception e) {
+//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//	}
 
 }
